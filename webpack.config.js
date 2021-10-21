@@ -3,8 +3,6 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: {
-    drop: "./src/drop-down.js",
-    mobile: "./src/mobile-menu.js",
     slider: "./src/image-slider.js",
   },
   output: {
