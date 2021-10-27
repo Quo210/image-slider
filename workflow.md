@@ -1,12 +1,13 @@
 last thing
 
-added prev-next buttons
+added interaction between nav buttons and dot nav
 
 next thing
 
-use intervals to advance the images every 10 secs when no user activity is detected 
+fix error with dot nav when looping beyond intented counter
 
-PENDING TO CHECK:
+PENDING TO READ AND WRITE ABOUT::
 
 transition css 
 css transform, trasnlateX and Y
+regexp.exec()
