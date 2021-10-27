@@ -151,10 +151,15 @@ const counter = (()=>{
         }
     }
 
+    function getDotByKey(key){
+        return document.querySelector(`div[data-key="${key}"]`);
+    }
+
     return {
         fill: fillCounter,
         get: getCounter,
         cleanCSS: removeClasses,
+        getDot: getDotByKey,
     }
 
 })();
@@ -164,12 +169,21 @@ const counter = (()=>{
 const arr = slides.getArr()
 const my = dom.showImg(arr[2])
 
+function changeDot(str){
+    const regexp = /cat(.*).jpeg/;
+    const key = regexp.exec(str,'g');
+    const dot = counter.getDot(key[1]);
+    counter.cleanCSS();
+    dot.classList.add('active-dot') 
+}
+
 function nextCat(){
     let cur = dom.currentCat(); // Current
     let nex = slides.nextCat(cur); // Next
     if (nex == false){
         return
     }
+    changeDot(nex);
     dom.empty();
     dom.showImg(nex)
 }
@@ -180,6 +194,7 @@ function prevCat(){
     if (pre == false){
         return
     }
+    changeDot(pre);
     dom.empty();
     dom.showImg(pre)
 }
@@ -191,7 +206,7 @@ nexB.addEventListener('click',nextCat);
 const preB = document.querySelector('div.prev-btn');
 preB.addEventListener('click',prevCat);
 
-counter.fill(arr); // Fills the counter with + symbols
+counter.fill(arr); // Fills the counter with dots
 slides.interval(nextCat); // Initiates the interval transition for the images
 
 
