@@ -1,10 +1,7 @@
-16/10
-set up the basic framework to start working
+last thing
 
-- config files
-- modules
-- several outputs to draw several index.html
+added prev-next buttons
 
-//
+next thing
 
-- link images to 
+use intervals to advance the images every 10 secs when no user activity is detected 

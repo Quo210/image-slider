@@ -20,10 +20,10 @@ const slides = (() => {
         const arr = getImgArr();
         let pos = arr.indexOf(current);
 
-        if (pos + 1 > arr.length - 1){
-            alert('Last image');
-            return false
-        }
+        // if (pos + 1 > arr.length - 1){
+        //     alert('Last image');
+        //     return false
+        // }
 
         return arr[pos + 1];
     }
@@ -37,16 +37,51 @@ const slides = (() => {
             return false
         }
 
-        return arr[pos-1];
+        return arr[pos - 1];
     }
+
+    function intervalEnabler(func){
+        var interval;
+
+        function resetTimer(){
+            clearInterval(interval);
+            interval = setInterval(func,3000)
+        }
+
+        window.onload = resetTimer;
+        document.onmousedown = resetTimer;
+        document.onkeydown = resetTimer;
+        
+    }
+
+    // var inactivityTime = function () {
+    //     var time;
+    //     window.onload = resetTimer;
+    //     // DOM Events
+    //     document.onmousemove = resetTimer;
+    //     document.onkeydown = resetTimer;
+    
+    //     function logout() {
+    //         alert("You are now logged out.")
+    //         //location.href = 'logout.html'
+    //     }
+    
+    //     function resetTimer() {
+    //         clearTimeout(time);
+    //         time = setTimeout(logout, 3000)
+    //         // 1000 milliseconds = 1 second
+    //     }
+    // };
     
 
     makeCatArray();
+    console.log(imgArray)
 
     return {
         getArr: getImgArr,
         prevCat: getPrevSrc,
         nextCat: getNextSrc,
+        interval: intervalEnabler,
     }
 })()
 
@@ -142,6 +177,7 @@ function prevCat(){
     dom.showImg(pre)
 }
 
+
 const nexB = document.querySelector('div.next-btn');
 nexB.addEventListener('click',nextCat);
 
@@ -149,3 +185,5 @@ const preB = document.querySelector('div.prev-btn');
 preB.addEventListener('click',prevCat);
 
 counter.fill(arr);
+
+slides.interval(nextCat);
