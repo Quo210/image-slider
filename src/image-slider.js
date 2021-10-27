@@ -45,7 +45,7 @@ const slides = (() => {
 
         function resetTimer(){
             clearInterval(interval);
-            interval = setInterval(func,3000)
+            interval = setInterval(func,10000)
         }
 
         window.onload = resetTimer;
@@ -75,7 +75,6 @@ const slides = (() => {
     
 
     makeCatArray();
-    console.log(imgArray)
 
     return {
         getArr: getImgArr,
@@ -135,7 +134,6 @@ const counter = (()=>{
         const cou = getCounter(); // counter
         for (let i = 0; i < arr.length; i++){
             const thing = document.createElement('div');
-            thing.textContent = '+';
             thing.classList.add('counter-thing');
             thing.setAttribute('data-key',`${i+1}`)
             cou.appendChild(thing);
@@ -146,8 +144,17 @@ const counter = (()=>{
         return document.querySelector('section.counter')
     }
 
+    function removeClasses(){
+        const dots = getCounter().children;
+        for (let dot of dots){
+            dot.classList.remove('active-dot')
+        }
+    }
+
     return {
         fill: fillCounter,
+        get: getCounter,
+        cleanCSS: removeClasses,
     }
 
 })();
@@ -184,6 +191,25 @@ nexB.addEventListener('click',nextCat);
 const preB = document.querySelector('div.prev-btn');
 preB.addEventListener('click',prevCat);
 
-counter.fill(arr);
+counter.fill(arr); // Fills the counter with + symbols
+slides.interval(nextCat); // Initiates the interval transition for the images
 
-slides.interval(nextCat);
+
+function linkToCats(){
+    const dotArr = counter.get().children;
+    let numb = 0;
+    
+    for (const dot of dotArr){
+        numb++;
+        const thing = `../images/cat${numb.toString()}.jpeg`;
+        dot.addEventListener('click',function(){
+            console.log(thing)
+            dom.empty();
+            dom.showImg(thing);
+            counter.cleanCSS();
+            this.classList.add('active-dot')
+        });
+    }
+};
+
+linkToCats();
