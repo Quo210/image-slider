@@ -8,6 +8,6 @@ fix error with dot nav when looping beyond intented counter
 
 PENDING TO READ AND WRITE ABOUT::
 
-transition css 
+transition css
 css transform, trasnlateX and Y
 regexp.exec()
