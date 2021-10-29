@@ -20,10 +20,10 @@ const slides = (() => {
         const arr = getImgArr();
         let pos = arr.indexOf(current);
 
-        // if (pos + 1 > arr.length - 1){
-        //     alert('Last image');
-        //     return false
-        // }
+        if (pos + 1 > arr.length - 1){
+            alert('Last image');
+            return false
+        }
 
         return arr[pos + 1];
     }
@@ -52,27 +52,7 @@ const slides = (() => {
         document.onmousedown = resetTimer;
         document.onkeydown = resetTimer;
         
-    }
-
-    // var inactivityTime = function () {
-    //     var time;
-    //     window.onload = resetTimer;
-    //     // DOM Events
-    //     document.onmousemove = resetTimer;
-    //     document.onkeydown = resetTimer;
-    
-    //     function logout() {
-    //         alert("You are now logged out.")
-    //         //location.href = 'logout.html'
-    //     }
-    
-    //     function resetTimer() {
-    //         clearTimeout(time);
-    //         time = setTimeout(logout, 3000)
-    //         // 1000 milliseconds = 1 second
-    //     }
-    // };
-    
+    }    
 
     makeCatArray();
 
@@ -207,7 +187,7 @@ const preB = document.querySelector('div.prev-btn');
 preB.addEventListener('click',prevCat);
 
 counter.fill(arr); // Fills the counter with dots
-slides.interval(nextCat); // Initiates the interval transition for the images
+//slides.interval(nextCat); // Initiates the interval transition for the images
 
 
 function linkToCats(){
@@ -225,6 +205,9 @@ function linkToCats(){
             this.classList.add('active-dot')
         });
     }
+
+    const third = document.querySelector('div[data-key="3"]');
+    third.classList.add('active-dot');
 };
 
 linkToCats();

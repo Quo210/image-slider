@@ -13,7 +13,7 @@ main {
     min-width: 100%;
     height: 500px;
     display: grid;
-    grid-template-columns: 10% auto 10%;
+    grid-template-columns: 20% auto 20%;
     grid-template-rows: 80% auto;
 }
 
@@ -26,7 +26,6 @@ section#frame {
     overflow: hidden;
     width: 50vw;
     margin: auto;
-    display: block;
     background-color: #6d695c;
     background-image:
     repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
@@ -34,11 +33,14 @@ section#frame {
     linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
     linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
     background-size: 70px 120px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 section.counter{
-    border: darkorange 10px outset;
-    background-color: rgb(92, 54, 9);
+    border: whitesmoke 10px outset;
+    background-color: yellowgreen;
     min-height: 20%;
     height: 100%;
     width: 25vw;
@@ -50,11 +52,23 @@ section.counter{
     align-items: center;
 }
 
+.img-holder{
+    background-color: rgba(1, 1, 1, 0.5);
+    border: black 5px solid;
+    border-radius: 10%;
+    width: 40vw;
+    height: 95%;
+    display: grid;
+    align-content: center;
+}
+
 .cat-img{
     transition: 0.5s all ease-in;
     display: block;
-    max-height: 400px;
+    max-height: 35vh;
     margin: auto;
+    align-self: center;
+    border: 1px white solid;
 }
 
 .prev-btn{
@@ -69,28 +83,45 @@ section.counter{
 
 .control{
     display: block;
-    height: 1px;
-    min-height: 10vh;
+    min-height: max-content;
     width: 80%;
+    height: 8vh;
     background-color: cadetblue;
     border: 5px solid white;
     align-self: center;
     justify-self: center;
-    font-size: 24px;
+    font-size: 32px;
     color: black;
-    text-align: center;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .counter-thing{
     height: 25px;
     width: 25px;
-    background-color: aqua;
+    background-color: rgb(44, 149, 153);
+    border: 1px solid white;
     border-radius: 50%;
-    transition: 0.1s ease-in;
+    transition: 0.5s ease-in;
 }
 
 .active-dot{
     background-color: coral;
     transform: scale(1.1);
+}
+
+h1{
+    font-family: monospace;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+span{
+    display: inline-block;
+    height: fit-content;
+    font-family: monospace;
+    font-weight: bold;
+    color: white;
 }
